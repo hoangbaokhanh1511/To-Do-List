@@ -56,6 +56,7 @@ const Modal_AddTask: React.FC<Modal_AddTaskProps> = ({ isOpen, onOpenChange }) =
       setNewTaskValue("")
       setSelectedKeys(new Set(["Choose Status"]))
       router.refresh();
+      onOpenChange();
     } catch (error) {
       console.error("Error creating task:", error);
       setErrorMessage("Xảy ra lỗi khi tạo công việc");
