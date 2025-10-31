@@ -118,6 +118,20 @@
       status: task.status,
     }));
 
+    const getStatusColor = (status: string) => {
+      status = status.toLowerCase();
+      switch (status) {
+        case "complete": 
+          return "bg-green-300";
+        case "in-progress":
+          return "bg-amber-300";
+        case "pending":
+          return "bg-red-300";
+        default:
+          return "bg-gray-300";
+      }
+    }
+
     return (
       <div className="mt-5">
         <Table aria-label="Todo list table">
@@ -145,8 +159,12 @@
                           </span>
                         </Tooltip>
                       </div>
+                    ) : columnKey === "status" ? (
+                      <span className= {` px-3 py-1 rounded-2xl text-sm  text-black ${getStatusColor(item.status)}`}>
+                          {item.status}
+                      </span>
                     ) : (
-                    getKeyValue(item, columnKey)
+                      getKeyValue(item, columnKey)
                     )}
                   </TableCell>
                 )}
