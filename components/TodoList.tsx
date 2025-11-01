@@ -1,10 +1,10 @@
   "use client";
-  import React, { useState } from "react";
+  import React, { useMemo, useState } from "react";
   import { ITask } from "@/types/task";
   import Modal_EditTask  from "./Modal_EditTask";
   import Modal_DeleteTask from "./Modal_DeleteTask";
 
-  import { Button, useDisclosure } from "@heroui/react";
+  import { Button, Pagination, useDisclosure } from "@heroui/react";
   import {
     Table,
     TableHeader,
@@ -112,12 +112,6 @@
       { key: "actions", label: "ACTIONS"}
     ];
 
-    const rows = tasks.map((task) => ({
-      key: task.id,
-      text: task.text,
-      status: task.status,
-    }));
-
     const getStatusColor = (status: string) => {
       status = status.toLowerCase();
       switch (status) {
@@ -132,9 +126,41 @@
       }
     }
 
+    const [page, setPage]   = useState(1);
+    const [pageSize, setPageSize] = useState(5);
+
+    const pages = Math.ceil(tasks.length / pageSize);
+
+    const items = useMemo(() => {
+      const start = (page - 1) * pageSize;
+      const end = start + pageSize;
+
+      return tasks.slice(start, end);
+    }, [page, tasks])
+
+    
+    const rows = items.map((task) => ({
+      key: task.id,
+      text: task.text,
+      status: task.status,
+    }));
+
     return (
       <div className="mt-5">
-        <Table aria-label="Todo list table">
+        <Table aria-label="Todo list table"
+        bottomContent={
+          <div>
+            <Pagination
+              className="flex justify-center"
+              isCompact
+              showControls
+              page={page}
+              total={pages}
+              color="secondary"
+              onChange={(page) => setPage(page)}
+            />
+          </div>
+        }>
           <TableHeader  columns={columns}>
             {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
           </TableHeader>

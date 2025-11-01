@@ -2,13 +2,17 @@ import { ITask, ITaskCreate } from "./types/task";
 
 const baseURL = 'http://localhost:3001'; 
 
-export const getAllTodos = async (): Promise<ITask[]> => {
-  const res = await fetch(`${baseURL}/task`);
+export const getAllTodos = async (): Promise<{todos: ITask[]}> => {
+  const res = await fetch(`${baseURL}/task`, {
+    cache: "no-store",
+  });
+
   if (!res.ok) {
     throw new Error("Failed to fetch todos");
   }
+
   const todos = await res.json();
-  return todos;
+  return {todos};
 };
 
 export const addToDo = async(task: ITask) : Promise<ITask> => {
