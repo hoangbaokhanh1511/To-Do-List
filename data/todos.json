@@ -1,18 +1,73 @@
 {
   "task": [
     {
-      "id": "1761937269895",
-      "text": "Học Tiếng Anh nè",
+      "id": "1761977010231",
+      "text": "Học máy (Thầy Lê Quang Chiến)",
       "status": "Complete"
     },
     {
-      "id": "1761937906364",
-      "text": "học",
+      "id": "1761977223157",
+      "text": "Học Python <3",
+      "status": "Pending"
+    },
+    {
+      "id": "1761992679978",
+      "text": "Học Phân tích thiết kế thuật toán (Thầy Hoàng Quang)",
       "status": "In-Progress"
     },
     {
-      "id": "1761973552383",
-      "text": "Hoc di ne",
+      "id": "1761993001001",
+      "text": "Ôn lại React Hooks (useState, useEffect, useMemo)",
+      "status": "Pending"
+    },
+    {
+      "id": "1761993002002",
+      "text": "Làm mini project Todo App bằng Next.js",
+      "status": "In-Progress"
+    },
+    {
+      "id": "1761993003003",
+      "text": "Đọc tài liệu về HeroUI và TailwindCSS",
+      "status": "Complete"
+    },
+    {
+      "id": "1761993004004",
+      "text": "Cài đặt môi trường Node.js và VSCode",
+      "status": "Complete"
+    },
+    {
+      "id": "1761993005005",
+      "text": "Học Git và GitHub cơ bản",
+      "status": "Pending"
+    },
+    {
+      "id": "1761993006006",
+      "text": "Tìm hiểu về RAG và ứng dụng NLP",
+      "status": "In-Progress"
+    },
+    {
+      "id": "1761993007007",
+      "text": "Làm bài tập Phân cụm dữ liệu (Clustering)",
+      "status": "Pending"
+    },
+    {
+      "id": "1761993008008",
+      "text": "Tối ưu code Python với list comprehension",
+      "status": "Complete"
+    },
+    {
+      "id": "1761993009009",
+      "text": "Tạo portfolio cá nhân bằng Next.js + Tailwind",
+      "status": "In-Progress"
+    },
+    {
+      "id": "1761993010010",
+      "text": "Ôn lại kiến thức về REST API và CRUD",
+      "status": "Pending"
+    },
+    {
+      "id": "1762001611583",
+      "text": "Hello",
       "status": "Complete"
     }
   ]
