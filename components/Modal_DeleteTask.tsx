@@ -11,6 +11,7 @@ import {
 import { useRouter } from "next/navigation";
 import { ITask } from "@/types/task";
 import { deleteToDo } from "@/api";
+import { showToast } from "@/components/Toast";
 
 interface Modal_DeleteTaskProps {
   isOpen: boolean;
@@ -56,10 +57,11 @@ const Modal_DeleteTask: React.FC<Modal_DeleteTaskProps> = ({
   const handleDelete = async () => {
     try {
       await deleteToDo(task.id);
+      showToast.success("Xoá task thành công !!!")
       router.refresh(); 
       onOpenChange(); 
     } catch (error) {
-      console.error("Error deleting task:", error);
+      showToast.error("Xoá task thất bại !!!")
     }
   };
 
@@ -103,7 +105,7 @@ const Modal_DeleteTask: React.FC<Modal_DeleteTaskProps> = ({
                 Huỷ
               </Button>
               <Button color="danger" startContent={<UserIcon />} variant="bordered" onPress={handleDelete}>
-                Delete user
+                Xác nhận
               </Button>
             </ModalFooter>
           </>

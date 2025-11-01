@@ -1,5 +1,5 @@
 "use client";
-import React, { FormEventHandler, useState } from "react";
+import React, { FormEventHandler, useEffect, useState } from "react";
 import {
   Modal,
   ModalContent,
@@ -14,7 +14,7 @@ import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@he
 import { ITask } from "@/types/task";
 import { addToDo } from "@/api";
 import { useRouter } from "next/navigation";
-
+import { showToast } from "@/components/Toast";
 interface Modal_AddTaskProps {
   isOpen: boolean;
   onOpenChange: () => void;
@@ -26,6 +26,12 @@ const Modal_AddTask: React.FC<Modal_AddTaskProps> = ({ isOpen, onOpenChange }) =
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const router = useRouter();
+
+  useEffect(() => {
+    if(!isOpen) {
+      setErrorMessage("");
+    }
+  },[isOpen])
 
   const selectedValue = React.useMemo(
     () => Array.from(selectedKeys).join(", ").replace(/_/g, ""),
@@ -52,13 +58,13 @@ const Modal_AddTask: React.FC<Modal_AddTaskProps> = ({ isOpen, onOpenChange }) =
     };
     try {
       await addToDo(newTask);
-      console.log("Task created successfully:", newTask);
-      setNewTaskValue("")
-      setSelectedKeys(new Set(["Choose Status"]))
+      showToast.success("Thêm task thành công!", "Công việc đã được thêm vào.");
+      setNewTaskValue("");
+      setSelectedKeys(new Set(["Choose Status"]));
       router.refresh();
       onOpenChange();
     } catch (error) {
-      console.error("Error creating task:", error);
+      showToast.error("Thêm task thất bại!", "Vui lòng thử lại");
       setErrorMessage("Xảy ra lỗi khi tạo công việc");
     }
   }

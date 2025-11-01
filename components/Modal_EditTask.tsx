@@ -14,7 +14,7 @@ import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@he
 import { ITask } from "@/types/task";
 import { updateToDo } from "@/api";
 import { useRouter } from "next/navigation";
-
+import { showToast } from "@/components/Toast";
 interface Modal_EditTaskProps {
   isOpen: boolean;
   onOpenChange: () => void;
@@ -60,14 +60,13 @@ const Modal_EditTask: React.FC<Modal_EditTaskProps> = ({ isOpen, onOpenChange, t
     };
     try {
       await updateToDo(updatedTask);
-      console.log("Task updated successfully:", updatedTask);
+      showToast.success("Cập nhật task thành công !!!");
       setNewTaskValue("")
       setSelectedKeys(new Set(["Choose Status"]))
       router.refresh();
       onOpenChange();
     } catch (error) {
-      console.error("Error updating task:", error);
-      setErrorMessage("Xảy ra lỗi khi cập nhật công việc");
+      showToast.error("Cập nhật task thất bại !!!");
     }
   }
 
