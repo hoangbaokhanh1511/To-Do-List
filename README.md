@@ -15,7 +15,7 @@ Một ứng dụng **quản lý công việc (Todo List)** được xây dựng 
 
 | Công nghệ | Mục đích |
 |------------|-----------|
-| **Next.js 14 (App Router)** | Framework chính, kết hợp SSR và Client Component |
+| **Next.js 16 (App Router)** | Framework chính, kết hợp SSR và Client Component |
 | **TypeScript** | Tăng độ an toàn khi code |
 | **TailwindCSS** | Thiết kế UI nhanh, gọn, responsive |
 | **HeroUI** | Component UI hiện đại (Button, Modal, Pagination, Toast) |
